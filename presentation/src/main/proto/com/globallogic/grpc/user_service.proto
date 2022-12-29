@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+package com.globallogic.grpc;
+
+import "com/globallogic/user.proto";
+
+service UserService {
+    rpc createUser (CreateUserRequest) returns (CreateUserResponse);
+    rpc authenticateUserCredentials (AuthenticateRequest) returns (AuthenticateResponse);
+}
+
+message CreateUserRequest {
+    string first_name = 1;
+    string last_name = 2;
+    Gender gender = 3;
+    string email = 4;
+    string contact = 5;
+    string password = 6;
+}
+
+message CreateUserResponse {
+    User user = 1;
+}
+
+message AuthenticateRequest {
+    string user_name = 1;
+    string password = 2;
+}
+
+message AuthenticateResponse {
+    string message = 1;
+}
